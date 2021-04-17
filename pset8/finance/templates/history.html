@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{row["symbol"]}}</td>
+                {% if row["status"] == 1%}
+                <td>+{{row["shares"]}}</td>
+                {% else %}
+                <td>-{{row["shares"]}}</td>
+                {% endif%}
+                <td>{{row["price"]}}</td>
+                <td>{{row["time"]}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
